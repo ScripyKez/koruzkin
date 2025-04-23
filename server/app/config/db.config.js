@@ -1,7 +1,7 @@
 module.exports = {
   USERNAME: "admin",
-  PASSWORD: "AK*1h2zS",
-  HOST: "rapaquoclo.beget.app",
-  PORT: 27017,
+  PASSWORD: "123456",
+  HOST: "127.0.0.1",
+  PORT: 3606,
   DB: "admin",
 }
