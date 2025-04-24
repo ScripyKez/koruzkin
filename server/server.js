@@ -6,11 +6,7 @@ const dbConfig = require("./app/config/db.config")
 
 const app = express()
 
-app.use(
-  cors({
-    origin: "http://202.181.148.53",
-  })
-)
+app.use(cors())
 /* for Angular Client (withCredentials) */
 // app.use(
 //   cors({
