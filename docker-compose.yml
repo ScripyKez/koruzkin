@@ -2,8 +2,9 @@ networks:
   dev:
 
 services:
-  mysql8.0:
+  mysql:
     image: mysql:8.0
+    restart: always
     container_name: mysql8.0
     ports:
       - "3306:3306"
@@ -13,11 +14,7 @@ services:
       - MYSQL_PASSWORD=123456
       - MYSQL_ROOT_PASSWORD=123456
     volumes:
-      - ./my.cnf:/root/.my.cnf:ro
-      - ./mysql8.0/conf.d:/etc/mysql/conf.d:ro
-      - ./mysql8.0/logs:/var/log/mysql:rw
-      - ./mysql8.0/initdb.d:/docker-entrypoint-initdb.d:ro
-      - ./auto-generate:/auto-generate:rw
+      - mysql_data:/var/lib/mysql/data
   nginx:
     image: nginx:stable-alpine
     ports:
@@ -31,6 +28,8 @@ services:
       - dev
 
   backend:
+    depends_on:
+      - mysql
     build:
       context: ./server
     networks:
@@ -41,3 +40,6 @@ services:
       context: ./front
     networks:
       - dev
+volumes:
+  mysql_data:
+    driver: local
