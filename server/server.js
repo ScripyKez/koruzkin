@@ -34,7 +34,7 @@ const Role = db.role
 
 db.mongoose
   .connect(
-    `mongodb://${dbConfig.USERNAME}:${dbConfig.PASSWORD}@${dbConfig.HOST}/${dbConfig.DB}`,
+    `mongodb://${dbConfig.USERNAME}:${dbConfig.PASSWORD}@${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
