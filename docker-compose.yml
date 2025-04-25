@@ -31,6 +31,8 @@ services:
       context: ./server
     networks:
       - dev
+    stdin_open: true
+    tty: true
 
   frontend:
     build:
