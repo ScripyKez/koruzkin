@@ -10,7 +10,7 @@ services:
     volumes:
       - mongodb_data:/data/test
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_USERNAME: kor
       MONGO_INITDB_ROOT_PASSWORD: 123456
       MONGO_INITDB_DATABASE: test
   nginx:
