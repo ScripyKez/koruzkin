@@ -8,13 +8,11 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - mongodb_data:/data/db
+      - mongodb_data:/data/admin
     environment:
       MONGO_INITDB_ROOT_USERNAME: "admin"
       MONGO_INITDB_ROOT_PASSWORD: "123456"
       MONGO_INITDB_DATABASE: "admin"
-      MONGO_INITDB_USERNAME: "admin"
-      MONGO_INITDB_PASSWORD: "123456"
   nginx:
     image: nginx:stable-alpine
     ports:
