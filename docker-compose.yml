@@ -12,7 +12,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: kor
       MONGO_INITDB_ROOT_PASSWORD: 123456
-      MONGO_INITDB_DATABASE: test
   nginx:
     image: nginx:stable-alpine
     ports:
