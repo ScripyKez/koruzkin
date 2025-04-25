@@ -8,12 +8,14 @@ services:
     env_file: ./.env
     container_name: my_mongodb
     ports:
-      - 7017:27017
+      - 27017:27017
     volumes:
       - db:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=123456
+    networks:
+      - dev
   nginx:
     image: nginx:stable-alpine
     ports:
