@@ -20,11 +20,7 @@ app.use(
   })
 )
 
-app.use(
-  cors({
-    origin: "*",
-  })
-)
+app.use(cors())
 
 const db = require("./app/models")
 const Role = db.role
