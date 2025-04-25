@@ -43,6 +43,8 @@ services:
       - DB_PORT=27017
     networks:
       - dev
+    ports:
+      - 8080:8080
     stdin_open: true
     tty: true
 
@@ -53,5 +55,7 @@ services:
       context: ./front
     networks:
       - dev
+    ports:
+      - 8081:8081
 volumes:
   db:
