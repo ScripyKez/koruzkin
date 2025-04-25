@@ -10,8 +10,9 @@ services:
     volumes:
       - mongodb_data:/data/test
     environment:
-      MONGO_INITDB_ROOT_USERNAME: kor
-      MONGO_INITDB_ROOT_PASSWORD: 123456
+      MONGO_INITDB_ROOT_USERNAME: koruzo
+      MONGO_INITDB_ROOT_PASSWORD: koruzo
+      MONGO_INITDB_DATABASE: koruzo
   nginx:
     image: nginx:stable-alpine
     ports:

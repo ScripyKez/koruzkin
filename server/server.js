@@ -25,7 +25,7 @@ app.use(
 const db = require("./app/models")
 const Role = db.role
 
-const uri = `mongodb://${dbConfig.USERNAME}:${dbConfig.PASSWORD}@${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}?authSource=admin`
+const uri = `mongodb://${dbConfig.USERNAME}:${dbConfig.PASSWORD}@${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}?authCredentials=admin`
 
 db.mongoose
   .connect(uri, {
