@@ -1,5 +1,5 @@
-networks:
-  dev:
+# networks:
+#   dev:
 
 services:
   mongodb:
@@ -14,8 +14,8 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=123456
-    networks:
-      - dev
+    # networks:
+    #   - dev
   nginx:
     image: nginx:stable-alpine
     ports:
@@ -25,8 +25,8 @@ services:
     depends_on:
       - backend
       - frontend
-    networks:
-      - dev
+    # networks:
+    #   - dev
 
   backend:
     depends_on:
@@ -41,15 +41,17 @@ services:
       - DB_PASSWORD=123456
       - DB_NAME=bezkoder_db
       - DB_PORT=27017
-    networks:
-      - dev
+    # networks:
+    #   - dev
     stdin_open: true
     tty: true
 
   frontend:
+    depends_on:
+      - backend
     build:
       context: ./front
-    networks:
-      - dev
+    # networks:
+    #   - dev
 volumes:
   db:
