@@ -2,18 +2,16 @@ networks:
   dev:
 
 services:
-  mysql_db:
-    image: mysql:latest
-    restart: always
+  mongodb:
+    image: mongo
+    container_name: my_mongodb
     ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: admin
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: 123456
+      - "27017:27017"
     volumes:
-      - ./dbdata:/var/lib/mysql/
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 1234567
   nginx:
     image: nginx:stable-alpine
     ports:
@@ -28,7 +26,7 @@ services:
 
   backend:
     depends_on:
-      - mysql_db
+      - mongodb
     build:
       context: ./server
     networks:
@@ -39,3 +37,5 @@ services:
       context: ./front
     networks:
       - dev
+volumes:
+  mongodb_data:
