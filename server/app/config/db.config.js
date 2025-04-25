@@ -3,5 +3,5 @@ module.exports = {
   PASSWORD: "123456",
   HOST: "202.181.148.53",
   PORT: "27017",
-  DB: "admin",
+  DB: "test",
 }
