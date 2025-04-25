@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 // parse requests of content-type - application/x-www-form-urlencoded
-// app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
 app.use(
   cookieSession({
@@ -39,6 +39,9 @@ db.mongoose
   })
   .catch(err => {
     console.error("Connection error", err)
+    console.error(
+      `mongodb://${dbConfig.USERNAME}:${dbConfig.PASSWORD}@${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`
+    )
     process.exit()
   })
 
