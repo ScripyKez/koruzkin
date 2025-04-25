@@ -1,7 +1,11 @@
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_HOST,
+  DB_PORT,
+  DB_NAME,
+} = process.env;
+
 module.exports = {
-  USERNAME: "koruzo",
-  PASSWORD: "koruzo",
-  HOST: "202.181.148.53",
-  PORT: "27017",
-  DB: "koruzo",
-}
+  url: `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`
+};

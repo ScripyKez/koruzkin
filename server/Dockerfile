@@ -1,10 +1,7 @@
-FROM node:latest
+FROM node:14
 
-COPY package.json package.json
-
+WORKDIR /bezkoder-app
+COPY package.json .
 RUN npm install
 COPY . .
-
-EXPOSE 8080
-CMD ["node", "server.js"]
-
+CMD npm start
