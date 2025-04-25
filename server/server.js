@@ -6,8 +6,6 @@ const dbConfig = require("./app/config/db.config")
 
 const app = express()
 
-app.use(cors())
-
 // parse requests of content-type - application/json
 app.use(express.json())
 
@@ -19,6 +17,12 @@ app.use(
     name: "bezkoder-session",
     keys: ["COOKIE_SECRET"], // should use as secret environment variable
     httpOnly: true,
+  })
+)
+
+app.use(
+  cors({
+    origin: "*",
   })
 )
 

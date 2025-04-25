@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"
 
-import { getPublicContent } from "../services/user.service";
+import { getPublicContent } from "../services/user.service"
 
 const Home: React.FC = () => {
-  const [content, setContent] = useState<string>("");
+  const [content, setContent] = useState<string>("")
 
   useEffect(() => {
     getPublicContent().then(
-      (response) => {
-        setContent(response.data);
+      response => {
+        setContent(response.data)
       },
-      (error) => {
+      error => {
+        console.log(error)
         const _content =
           (error.response && error.response.data) ||
           error.message ||
-          error.toString();
+          error.toString()
 
-        setContent(_content);
+        setContent(_content)
       }
-    );
-  }, []);
+    )
+  }, [])
 
   return (
     <div className="container">
@@ -27,7 +28,7 @@ const Home: React.FC = () => {
         <h3>{content}</h3>
       </header>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
