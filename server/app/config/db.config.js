@@ -1,5 +1,5 @@
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = {
-  DB_HOST: "localhost",
+  DB_HOST: "202.181.148.53",
   DB_USER: "root",
   DB_PASSWORD: "123456",
   DB_NAME: "bezkoder_db",
