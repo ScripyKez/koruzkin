@@ -7,13 +7,6 @@ const dbConfig = require("./app/config/db.config")
 const app = express()
 
 app.use(cors())
-/* for Angular Client (withCredentials) */
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: ["http://localhost:8081"],
-//   })
-// );
 
 // parse requests of content-type - application/json
 app.use(express.json())
@@ -60,7 +53,7 @@ require("./app/routes/user.routes")(app)
 require("./app/routes/task.routes")(app)
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080
+const PORT = 8080
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`)
 })
