@@ -10,9 +10,9 @@ services:
     volumes:
       - mongodb_data:/data/admin
     environment:
-      MONGO_INITDB_ROOT_USERNAME: "admin"
-      MONGO_INITDB_ROOT_PASSWORD: "123456"
-      MONGO_INITDB_DATABASE: "admin"
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+      MONGO_INITDB_DATABASE: admin
   nginx:
     image: nginx:stable-alpine
     ports:
