@@ -1,7 +1,7 @@
 module.exports = {
-  USERNAME: proccess.env.DB_NAME,
-  PASSWORD: proccess.env.DB_PASSWORD,
-  HOST: proccess.env.HOST,
-  PORT: proccess.env.DB_PORT,
-  DB: proccess.env.DB_NAME,
+  USERNAME: process.env.DB_NAME,
+  PASSWORD: process.env.DB_PASSWORD,
+  HOST: process.env.HOST,
+  PORT: process.env.DB_PORT,
+  DB: process.env.DB_NAME,
 }
