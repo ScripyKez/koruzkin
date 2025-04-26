@@ -12,8 +12,8 @@ services:
     volumes:
       - db:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=123456
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
     networks:
       - dev
   nginx:
@@ -37,10 +37,11 @@ services:
     env_file: ./.env
     environment:
       - DB_HOST=mongodb
-      - DB_USER=root
-      - DB_PASSWORD=123456
-      - DB_NAME=bezkoder_db
-      - DB_PORT=27017
+      - DB_USER=$MONGODB_USERNAME
+      - DB_PASSWORD=$MONGODB_PASSWORD
+      - DB_NAME=$MONGODB_DB_NAME
+      - DB_PORT=$MONGODB_PORT
+      - HOST=$HOST
     networks:
       - dev
     ports:
