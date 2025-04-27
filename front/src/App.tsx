@@ -1,49 +1,50 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import React from "react"
+import { useState, useEffect } from "react"
+import { Routes, Route, Link } from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
 
-import * as AuthService from "./services/auth.service";
-import IUser from './types/user.type';
+import * as AuthService from "./services/auth.service"
+import IUser from "./types/user.type"
 
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
-import BoardUser from "./components/BoardUser";
-import BoardModerator from "./components/BoardModerator";
-import BoardAdmin from "./components/BoardAdmin";
+import Login from "./components/Login"
+import Register from "./components/Register"
+import Home from "./components/Home"
+import Profile from "./components/Profile"
+import BoardUser from "./components/BoardUser"
+import BoardModerator from "./components/BoardModerator"
+import BoardAdmin from "./components/BoardAdmin"
 
-import EventBus from "./common/EventBus";
+import EventBus from "./common/EventBus"
+import { NorthgardRandomizer } from "./features/northgard-randomizer"
 
 const App: React.FC = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState<boolean>(false);
-  const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
+  const [showModeratorBoard, setShowModeratorBoard] = useState<boolean>(false)
+  const [showAdminBoard, setShowAdminBoard] = useState<boolean>(false)
+  const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined)
 
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
+    const user = AuthService.getCurrentUser()
 
     if (user) {
-      setCurrentUser(user);
-      setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
-      setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
+      setCurrentUser(user)
+      setShowModeratorBoard(user?.roles?.includes("ROLE_MODERATOR") || false)
+      setShowAdminBoard(user?.roles?.includes("ROLE_ADMIN") || false)
     }
 
-    EventBus.on("logout", logOut);
+    EventBus.on("logout", logOut)
 
     return () => {
-      EventBus.remove("logout", logOut);
-    };
-  }, []);
+      EventBus.remove("logout", logOut)
+    }
+  }, [])
 
   const logOut = () => {
-    AuthService.logout();
-    setShowModeratorBoard(false);
-    setShowAdminBoard(false);
-    setCurrentUser(undefined);
-  };
+    AuthService.logout()
+    setShowModeratorBoard(false)
+    setShowAdminBoard(false)
+    setCurrentUser(undefined)
+  }
 
   return (
     <div>
@@ -116,6 +117,7 @@ const App: React.FC = () => {
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/north" element={<NorthgardRandomizer />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -126,7 +128,7 @@ const App: React.FC = () => {
         </Routes>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

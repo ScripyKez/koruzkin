@@ -1,0 +1,40 @@
+.root {
+  display: flex;
+  gap: 1rem;
+}
+
+.clanCard {
+  max-width: 120px;
+  min-height: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  border: 0.125rem solid black;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.clanCard > img {
+  max-width: 320px;
+  opacity: 1;
+}
+
+.clanCard > p {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0;
+}
+
+.clanCard:hover > p {
+  opacity: 1;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.clanCard:hover > img {
+  opacity: 50%;
+  transition: all 0.3s ease;
+}
